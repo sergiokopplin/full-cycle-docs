@@ -21,6 +21,9 @@ Comandos Docker:
 - docker run -d -p 8080:80 nginx
   rodar o container em modo detached no terminal
 
+- docker run -d -p 8080:80 --name nginx nginx
+  inicia um container com um nome específico
+
 - docker start 3fa355139c2b
   inicia um container específico que estava desligado
 
@@ -32,3 +35,9 @@ Comandos Docker:
 
 - docker rm jovial_mclaren -f
   mata o processo e remove container pelo nome
+
+- docker exec nginx ls
+  executa um comando dentro do container que estava rodando
+
+- docker exec -it nginx bash
+  executa um comando dentro do container e inicia o processo
