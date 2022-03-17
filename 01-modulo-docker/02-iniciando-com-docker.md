@@ -41,3 +41,9 @@ Comandos Docker:
 
 - docker exec -it nginx bash
   executa um comando dentro do container e inicia o processo
+
+- docker run -d -p 8080:80 --name nginx -v ~/projects/full-cycle-course/01-modulo-docker/examples/html:/usr/share/nginx/html nginx
+  monta uma pasta específica em um container, porém é melhor usar o --mount
+
+- docker run -d -p 8080:80 --name nginx --mount type=bind,source="$(pwd)"/html,target=/usr/share/nginx/html nginx
+  monta volume com --mount
