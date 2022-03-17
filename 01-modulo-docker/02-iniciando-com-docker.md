@@ -13,10 +13,22 @@ Comandos Docker:
   modo interativo do container run ubuntu
 
 - docker run -it --rm ubuntu bash
-  modo interativo do container, quando sair o container será desligado automaticamente
+  modo interativo do container, quando sair od container será desligado automaticamente
 
 - docker run -p 8080:80 nginx
   quando acessar o 8080 do host, o docker redireciona para o 80 do container
 
 - docker run -d -p 8080:80 nginx
   rodar o container em modo detached no terminal
+
+- docker start 3fa355139c2b
+  inicia um container específico que estava desligado
+
+- docker rm 3fa355139c2b
+  remove um container específico
+
+- docker rm jovial_mclaren
+  remove container pelo nome
+
+- docker rm jovial_mclaren -f
+  mata o processo e remove container pelo nome
