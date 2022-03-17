@@ -47,3 +47,18 @@ Comandos Docker:
 
 - docker run -d -p 8080:80 --name nginx --mount type=bind,source="$(pwd)"/html,target=/usr/share/nginx/html nginx
   monta volume com --mount
+
+- docker volume ls
+  lista os driver e volumes
+
+- docker volume create meuvolume
+  cria um volume
+
+- docker volume inspect meuvolume
+  inspeciona um volume específico
+
+- docker run -d -p 8080:80 --name nginx --mount type=volume,source=meuvolume,target=/usr/share/nginx/html nginx
+  monta container apontando um volume
+
+- docker volume prune
+  elimina volumes
