@@ -9,3 +9,6 @@
 
 - docker rmi php:latest
   remove imagem específica
+
+- docker build -t kopplin/nginx-with-vim:latest ./examples
+  build de uma imagem específica com dockerfile
