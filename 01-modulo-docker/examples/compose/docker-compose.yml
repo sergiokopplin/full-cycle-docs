@@ -2,6 +2,20 @@ version: "3"
 
 services:
 
+    db:
+      image: mysql:5.7
+      command: --innodb-use-native-aio=0
+      container_name: db
+      restart: always
+      tty: true
+      volumes: 
+        - ../mysql:/var/lib/mysql
+      environment:
+        - MYSQL_DATABASE=nodedb
+        - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      networks:
+        - laranet
+
     laravel:
       build: 
         context: ../laravel
