@@ -1,14 +1,14 @@
 {
-  "name": "full-cycle-course",
-  "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0"
-  },
   "scripts": {
-    "cm": "cz"
+    "cm": "npx git-cz"
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "git-cz"
     }
+  },
+  "dependencies": {
+    "commitizen": "^4.2.4",
+    "git-cz": "^4.8.0"
   }
 }
