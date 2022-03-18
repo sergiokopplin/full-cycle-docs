@@ -18,12 +18,14 @@ services:
 
     laravel:
       build: 
-        context: ../laravel
+        context: ../laravel 
         dockerfile: Dockerfile.prod
       image: k/laravel:prod
       container_name: laravel
       networks:
         - laranet
+      depends_on: 
+        - db
 
     nginx:
       build: 
@@ -35,6 +37,8 @@ services:
         - laranet
       ports:
         - "8080:80"
+      depends_on: 
+        - db
 
 networks:
   laranet:
