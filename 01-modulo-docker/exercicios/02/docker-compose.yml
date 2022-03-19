@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: db
+    restart: always
+    tty: true
+    volumes: 
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    networks:
+      - kopplin
+
+  nginx:
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile
+    image: kopplin/nginx
+    container_name: nginx
+    networks:
+      - kopplin
+    ports:
+      - "8080:80"
+    depends_on: 
+      - db
+
+  node:
+    build: 
+      context: ./NODE
+      dockerfile: Dockerfile
+    image: kopplin/node
+    container_name: node
+    networks:
+      - kopplin
+    depends_on: 
+      - db
+
+networks:
+  kopplin:
+    driver: bridge
