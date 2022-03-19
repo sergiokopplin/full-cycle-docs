@@ -1,9 +1,11 @@
-FROM node:alpine
+FROM node:14 AS builder
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY . . /usr/src/app/
+COPY . .
+
+RUN npm i
 
 EXPOSE 3000
 
-CMD [ "node", "index.js" ]
+CMD [ "npm", "start" ]
