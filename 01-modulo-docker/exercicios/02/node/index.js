@@ -14,10 +14,10 @@ const mysql = require('mysql')
 const connection = mysql.createConnection(config)
 
 app.get('/', (_, res) => {
-  const name = faker.name.findName()
+  const n = faker.name.findName()
 
-  connection.query(`INSERT INTO people (nome) VALUES ('${name}')`)
-  connection.query(`SELECT nome FROM people`, (_, results, _) => {
+  connection.query(`INSERT INTO people (nome) VALUES ('${n}')`)
+  connection.query(`SELECT nome FROM people`, (_param, results, _lastParam) => {
     res.send(`
       <h1>Full Cycle Rocks!</h1>
       <ol>
