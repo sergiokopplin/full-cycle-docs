@@ -6,7 +6,19 @@ public class Category {
   private UUID id;
   private String name;
   private String description;
-  private Boolean isActive;
+  private Boolean isActive = true;
+
+  public Category(UUID id, String name, String description) throws Exception {
+    this.setId(id);
+    this.setName(name);
+    this.setDescription(description);
+  }
+
+  public Category(String name, String description) throws Exception {
+    this.id = UUID.randomUUID();
+    this.setName(name);
+    this.setDescription(description);
+  }
 
   public UUID getId() {
     return this.id;
@@ -48,7 +60,11 @@ public class Category {
     return this.isActive;
   }
 
-  public void setIsActive(Boolean isActive) {
-    this.isActive = isActive;
+  public Boolean activate() {
+    return this.isActive = true;
+  }
+
+  public Boolean deactivate() {
+    return this.isActive = false;
   }
 }
