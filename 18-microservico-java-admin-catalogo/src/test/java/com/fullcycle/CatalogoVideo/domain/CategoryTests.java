@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,17 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public class CategoryTests {
 
   @Test
-  public void createCategoryWithNameWithDescriptionNull() throws Exception {
+  public void throwDomainExceptionWhenNameIsNull() {
+    assertThrows(DomainException.class, () -> new Category(null, "Name"));
+  }
+
+  @Test
+  public void throwDomainExceptionWhenNameIsBlank() {
+    assertThrows(DomainException.class, () -> new Category("", "Name"));
+  }
+
+  @Test
+  public void createCategoryWithNameWithDescriptionNull() {
     final Category entity = new Category(
         "Name 1",
         null);
@@ -27,7 +38,7 @@ public class CategoryTests {
   }
 
   @Test
-  public void createCategoryWithNameAndDescription() throws Exception {
+  public void createCategoryWithNameAndDescription() {
     final Category entity = new Category(
         "Name 1",
         "Description 2");
@@ -38,7 +49,7 @@ public class CategoryTests {
   }
 
   @Test
-  public void createCategoryAndActive() throws Exception {
+  public void createCategoryAndActive() {
     final Category entity = new Category(
         "Name 1",
         "Description 2");
@@ -48,7 +59,7 @@ public class CategoryTests {
   }
 
   @Test
-  public void createCategoryAndIsDeactive() throws Exception {
+  public void createCategoryAndIsDeactive() {
     final Category entity = new Category(
         "Name 1",
         "Description 2");
@@ -59,7 +70,7 @@ public class CategoryTests {
   }
 
   @Test
-  public void updateCategoryWithDeactive() throws Exception {
+  public void updateCategoryWithDeactive() {
     final Category entity = new Category(
         "Name 1",
         "Description 2");
@@ -72,7 +83,7 @@ public class CategoryTests {
   }
 
   @Test
-  public void updateCategoryWithActive() throws Exception {
+  public void updateCategoryWithActive() {
     final Category entity = new Category(
         "Name 1",
         "Description 2");
