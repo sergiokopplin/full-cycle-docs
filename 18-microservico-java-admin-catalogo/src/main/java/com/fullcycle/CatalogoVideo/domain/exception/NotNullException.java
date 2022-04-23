@@ -1,4 +1,4 @@
-package com.fullcycle.CatalogoVideo.domain;
+package com.fullcycle.CatalogoVideo.domain.exception;
 
 public class NotNullException extends DomainException {
   public NotNullException() {

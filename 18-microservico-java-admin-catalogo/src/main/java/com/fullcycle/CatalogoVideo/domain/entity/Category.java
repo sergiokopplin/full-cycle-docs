@@ -1,6 +1,9 @@
-package com.fullcycle.CatalogoVideo.domain;
+package com.fullcycle.CatalogoVideo.domain.entity;
 
 import java.util.UUID;
+
+import com.fullcycle.CatalogoVideo.domain.exception.NotBlankException;
+import com.fullcycle.CatalogoVideo.domain.exception.NotNullException;
 
 public class Category {
   private UUID id;

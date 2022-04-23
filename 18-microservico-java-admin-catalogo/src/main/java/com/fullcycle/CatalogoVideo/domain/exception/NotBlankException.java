@@ -1,4 +1,4 @@
-package com.fullcycle.CatalogoVideo.domain;
+package com.fullcycle.CatalogoVideo.domain.exception;
 
 public class NotBlankException extends DomainException {
   public NotBlankException() {
