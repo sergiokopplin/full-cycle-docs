@@ -57,4 +57,30 @@ public class CategoryTests {
     assertNotNull(entity);
     assertFalse(entity.getIsActive());
   }
+
+  @Test
+  public void updateCategoryWithDeactive() throws Exception {
+    final Category entity = new Category(
+        "Name 1",
+        "Description 2");
+
+    entity.update("Name 2", "Description 3", false);
+    assertNotNull(entity);
+    assertEquals(entity.getName(), "Name 2");
+    assertEquals(entity.getDescription(), "Description 3");
+    assertFalse(entity.getIsActive());
+  }
+
+  @Test
+  public void updateCategoryWithActive() throws Exception {
+    final Category entity = new Category(
+        "Name 1",
+        "Description 2");
+
+    entity.update("Name 2", "Description 3", true);
+    assertNotNull(entity);
+    assertEquals(entity.getName(), "Name 2");
+    assertEquals(entity.getDescription(), "Description 3");
+    assertTrue(entity.getIsActive());
+  }
 }

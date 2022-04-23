@@ -52,10 +52,6 @@ public class Category {
     this.description = description;
   }
 
-  public Boolean isIsActive() {
-    return this.isActive;
-  }
-
   public Boolean getIsActive() {
     return this.isActive;
   }
@@ -66,5 +62,18 @@ public class Category {
 
   public Boolean deactivate() {
     return this.isActive = false;
+  }
+
+  public void update(String name, String description, Boolean isActive) throws Exception {
+    this.setName(name);
+    this.setDescription(description);
+
+    if (isActive != null && this.getIsActive() != isActive) {
+      if (isActive == true) {
+        this.activate();
+      } else {
+        this.deactivate();
+      }
+    }
   }
 }
