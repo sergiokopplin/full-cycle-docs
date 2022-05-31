@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    restart: always
+    ports: 
+      - '8080:80'
+    depends_on:
+      - node
+    networks:
+      - kopplin
+  
+  node:
+    container_name: node
+    restart: always
+    build:
+      context: ./node
+    depends_on:
+      - db
+    networks:
+      - kopplin
+
+  db:
+    build: 
+      context: ./mysql
+    container_name: db
+    restart: always
+    tty: true
+    networks:
+      - kopplin
+    volumes:
+      - ./mysql/volume:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD
+
+networks:
+  kopplin:
+    driver: bridge

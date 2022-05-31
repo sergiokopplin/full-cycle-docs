@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "faker": "^5.5.3",
+    "mysql": "^2.18.1"
+  }
+}
