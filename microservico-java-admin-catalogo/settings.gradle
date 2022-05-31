@@ -1,5 +1,0 @@
-rootProject.name = 'microservico-java-admin-catalogo'
-include 'domain'
-include 'application'
-include 'infrastructure'
-
