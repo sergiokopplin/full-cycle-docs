@@ -9,3 +9,15 @@ Pods
 
 - unidade que contém os containers provisionados
 - o pod representa os processos rodando no cluster
+
+Deployment
+
+- controla a quantidade de ReplicaSets de uma instância, de modo que provisiona automaticamente a escala
+- dado que um cluster está esgotado em recurso, pode alocar automaticamente em outro nó do cluster
+
+Rodando
+
+- kind create cluster
+- docker ps (precisa mostrar o kind rodando)
+- kubectl get nodes (mostrar o node que subiu)
+- kind create cluster --config=./k8s/kind.yaml --name=fullcycle
