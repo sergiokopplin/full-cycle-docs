@@ -7,16 +7,33 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: goserver
+      app: goserver    
   replicas: 1
   template:
     metadata:
-      labels: 
+      labels:
         app: "goserver"
     spec:
       containers:
-        - name: "goserver"
-          image: kopplin/hello-go:latest
+        - name: goserver
+          image: "kopplin/hello-go"
+
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            periodSeconds: 3
+            failureThreshold: 1
+            initialDelaySeconds: 10
+
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            periodSeconds: 3
+            failureThreshold: 1
+            initialDelaySeconds: 10
+
           livenessProbe:
             httpGet:
               path: /healthz
@@ -25,6 +42,4 @@ spec:
             failureThreshold: 1
             timeoutSeconds: 1
             successThreshold: 1
-          # envFrom:
-          #   - configMapRef:
-          #     name: goserver-env
+            initialDelaySeconds: 15

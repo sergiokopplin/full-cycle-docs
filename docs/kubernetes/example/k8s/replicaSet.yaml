@@ -7,15 +7,13 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: goserver
-  replicas: 2
+      app: goserver    
+  replicas: 10
   template:
     metadata:
-      labels: 
+      labels:
         app: "goserver"
     spec:
       containers:
-        - name: "goserver"
-          image: kopplin/hello-go:latest
-
-# kubectl apply -f k8s/replicaSet.yaml
+        - name: goserver
+          image: "kopplin/hello-go"

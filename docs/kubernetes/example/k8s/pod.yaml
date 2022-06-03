@@ -2,11 +2,9 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: "goserver"
-  labels: 
+  labels:
     app: "goserver"
 spec:
   containers:
-    - name: "goserver"
-      image: kopplin/hello-go:latest
-
-# kubectl apply -f k8s/pod.yaml
+    - name: goserver
+      image: "kopplin/hello-go:latest"
