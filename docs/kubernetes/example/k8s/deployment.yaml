@@ -18,5 +18,18 @@ spec:
       containers:
         - name: "goserver"
           image: kopplin/hello-go:latest
+          envFrom:
+            - configMapRef:
+              name: goserver-env
+            # - name: NAME
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       key: NAME
+            #       name: goserver-env
+            # - name: AGE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       key: AGE
+            #       name: goserver-env
 
 # kubectl apply -f k8s/deployment.yaml
