@@ -34,3 +34,8 @@ Rollout
 
 - kubectl rollout undo deploymeny goserver // volta a última imagem do deployment, re-configurando o replicaSet
 - kubectl rollout undo deploymeny goserver --to-revision=2 // para uma específica
+
+Proxy
+
+- para acesso das apis internas
+- kubectl proxy --port=8080
