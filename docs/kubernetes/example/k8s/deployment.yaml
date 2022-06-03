@@ -1,6 +1,5 @@
-
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
   name: goserver
   labels:
@@ -9,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: goserver
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels: 
@@ -18,18 +17,14 @@ spec:
       containers:
         - name: "goserver"
           image: kopplin/hello-go:latest
-          envFrom:
-            - configMapRef:
-              name: goserver-env
-            # - name: NAME
-            #   valueFrom:
-            #     configMapKeyRef:
-            #       key: NAME
-            #       name: goserver-env
-            # - name: AGE
-            #   valueFrom:
-            #     configMapKeyRef:
-            #       key: AGE
-            #       name: goserver-env
-
-# kubectl apply -f k8s/deployment.yaml
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            periodSeconds: 5
+            failureThreshold: 1
+            timeoutSeconds: 1
+            successThreshold: 1
+          # envFrom:
+          #   - configMapRef:
+          #     name: goserver-env
